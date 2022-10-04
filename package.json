@@ -1,0 +1,14 @@
+{
+  "name": "sheapgamerapi",
+  "version": "1.0.0",
+  "description": "API for Sheapgamer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "noppadol.m",
+  "license": "ISC",
+  "dependencies": {
+    "nintendo-switch-eshop": "^7.1.2"
+  }
+}
