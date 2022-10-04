@@ -22,4 +22,27 @@ async function jpGames() {
     return gameObj;
 }
 
+async function americaGames() {
+    const gamesList = await getGamesAmerica();
+    let gameIDArray = [];
+    let gameObj = {};
+    const slice = gamesList.slice(0, 50);
+    slice.forEach(function(game) {
+        let nsid = parseNSUID(game, Region.AMERICAS);
+        gameIDArray.push(nsid);
+        gameObj[nsid] = {};
+        gameObj[nsid].title = game.title; 
+        gameObj[nsid].image = game.boxart ?? game.horizontalHeaderImage; 
+    });
+    
+    let priceList = await getPrices('US', gameIDArray);
+    priceList.prices.forEach(function(game) {
+        let price = typeof game.regular_price === 'undefined' ? 'No data' : game.regular_price;
+        gameObj[game.title_id].price = price;
+    });
+
+    return gameObj;
+}
+
 module.exports.jpGames = jpGames;
+module.exports.americaGames = americaGames;
