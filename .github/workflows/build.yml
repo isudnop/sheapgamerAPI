@@ -4,7 +4,6 @@ name: Build
 on:
   pull_request:
 
-
 env:
   GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
@@ -12,13 +11,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
       - name: 'Fetch GitHub Actions Repo'
         uses: actions/checkout@v3
-        with:
-          ref: master
-          path: .github/actions
 
       - uses: actions/setup-node@v3
         with:
