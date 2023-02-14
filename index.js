@@ -1,8 +1,8 @@
-const fetcher = require('./src/fetcher.js');
+const fetcher = require('./src/nintendo-switch-fetcher.js');
 
 exports.handler = async (event) => {
-    let games = await fetcher.jpGames();
-    let game2 = await fetcher.americaGames();
+    let games = await fetcher.fetchGamesAndPrices('JP');
+    let game2 = await fetcher.fetchGamesAndPrices('US');
 
     const response = {
         statusCode: 200,
